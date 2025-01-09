@@ -1,11 +1,9 @@
 const mongoose = require("mongoose")
-const {MongoMemoryServer} = require("mongodb-memory-server")
 require('dotenv').config()
 
 
 module.exports.connect = async () => {
-  const mongoDb = await MongoMemoryServer.create()
-  const uri = mongoDb.getUri()
+  const uri = process.env.DATABASE_URI
   const mongooseOpts = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
